@@ -6,9 +6,7 @@ const CityAndCountryName = ({ cityName, countryName, error, countryError }) => {
     }
     return capCityName;
   };
-  console.log(error);
-  console.log(countryError);
-  if (error || countryError) {
+  if (error) {
     return null;
   } else {
     return (

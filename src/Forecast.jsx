@@ -18,7 +18,7 @@ const Forecast = ({ data, loading, error, countryError }) => {
     "Friday",
     "Saturday",
   ];
-  if (error || countryError) {
+  if (error) {
     return <h1>Sorry there has been a problem getting the results</h1>;
   }
   if (loading) {
