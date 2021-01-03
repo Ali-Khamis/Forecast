@@ -12,6 +12,7 @@ class App extends Component {
     countryData: null,
     data: null,
     error: false,
+    countryError: false,
     loading: true,
   };
 
@@ -50,20 +51,27 @@ class App extends Component {
                 country: countryCodeJson,
                 countryCode: countryCodeJson,
               });
+              this.setState({
+                countryError: false,
+                loading: false,
+              });
               return;
             }
           }
         );
-
-        this.setState({
-          error: false,
-          loading: false,
-        });
+        if (this.state.country && this.state.countryCode) {
+          return;
+        } else {
+          this.setState({
+            countryError: true,
+            loading: false,
+          });
+        }
       })
       .catch(() => {
         this.setState({
           country: "",
-          error: true,
+          countryError: true,
           loading: false,
         });
       });
@@ -112,10 +120,13 @@ class App extends Component {
         <CityAndCountryName
           cityName={this.state.city}
           countryName={this.state.country}
+          countryError={this.state.countryError}
+          error={this.state.error}
         />
         <Forecast
           data={this.state.data}
           countryData={this.state.countryData}
+          countryError={this.state.countryError}
           error={this.state.error}
           loading={this.state.loading}
         />

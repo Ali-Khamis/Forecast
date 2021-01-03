@@ -1,4 +1,4 @@
-const CityAndCountryName = ({ cityName, countryName }) => {
+const CityAndCountryName = ({ cityName, countryName, error, countryError }) => {
   const capitalizeFirstLetter = () => {
     let capCityName = "";
     if (cityName !== undefined) {
@@ -6,14 +6,20 @@ const CityAndCountryName = ({ cityName, countryName }) => {
     }
     return capCityName;
   };
-  return (
-    <div>
-      <h1 className="CityName">
-        Forecast for: {capitalizeFirstLetter(cityName)}
-        {countryName && ","}
-        {countryName}
-      </h1>
-    </div>
-  );
+  console.log(error);
+  console.log(countryError);
+  if (error || countryError) {
+    return null;
+  } else {
+    return (
+      <div>
+        <h1 className="CityName">
+          Forecast for: {capitalizeFirstLetter(cityName)}
+          {countryName && ","}
+          {countryName}
+        </h1>
+      </div>
+    );
+  }
 };
 export default CityAndCountryName;

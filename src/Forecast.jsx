@@ -2,7 +2,7 @@ import rain from "./images/rain.jpg";
 import clouds from "./images/Clouds.jpg";
 import sunny from "./images/Sunny.jpg";
 
-const Forecast = ({ data, loading, error }) => {
+const Forecast = ({ data, loading, error, countryError }) => {
   function formatDate(string) {
     let options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(string).toLocaleDateString([], options);
@@ -18,7 +18,7 @@ const Forecast = ({ data, loading, error }) => {
     "Friday",
     "Saturday",
   ];
-  if (error) {
+  if (error || countryError) {
     return <h1>Sorry there has been a problem getting the results</h1>;
   }
   if (loading) {
