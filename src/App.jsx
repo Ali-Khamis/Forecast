@@ -42,7 +42,6 @@ class App extends Component {
               country_id: countryCodeJson,
             },
           }) => {
-            console.log("1");
             if (
               countryNameJson === countryName.toUpperCase() ||
               countryCodeJson === countryName.toUpperCase()
@@ -67,7 +66,6 @@ class App extends Component {
           error: true,
           loading: false,
         });
-        console.log("Error fetching country");
       });
   };
 
