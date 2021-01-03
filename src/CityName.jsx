@@ -10,6 +10,7 @@ const CityAndCountryName = ({ cityName, countryName }) => {
     <div>
       <h1 className="CityName">
         Forecast for: {capitalizeFirstLetter(cityName)}
+        {countryName && ","}
         {countryName}
       </h1>
     </div>

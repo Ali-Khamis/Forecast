@@ -35,20 +35,27 @@ class App extends Component {
       .get("http://vocab.nic.in/cla.php?cat=mast&info=country&format=json")
       .then((res) => {
         const countriesArray = res.data.countries;
-        const theCountries = countriesArray.map((country) => {
-          let countryNameJson = country.country.country_name;
-          let countryCodeJson = country.country.country_id;
-
-          if (
-            countryNameJson === countryName.toUpperCase() ||
-            countryCodeJson === countryName.toUpperCase()
-          ) {
-            this.setState({
-              country: ", " + countryCodeJson,
-              countryCode: countryCodeJson,
-            });
+        countriesArray.forEach(
+          ({
+            country: {
+              country_name: countryNameJson,
+              country_id: countryCodeJson,
+            },
+          }) => {
+            console.log("1");
+            if (
+              countryNameJson === countryName.toUpperCase() ||
+              countryCodeJson === countryName.toUpperCase()
+            ) {
+              this.setState({
+                country: countryCodeJson,
+                countryCode: countryCodeJson,
+              });
+              return;
+            }
           }
-        });
+        );
+
         this.setState({
           error: false,
           loading: false,
@@ -60,6 +67,7 @@ class App extends Component {
           error: true,
           loading: false,
         });
+        console.log("Error fetching country");
       });
   };
 
