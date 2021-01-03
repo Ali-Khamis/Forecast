@@ -1,14 +1,144 @@
-body {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.City_search {
+  position: relative;
+  display: flex;
+  flex-flow: column-reverse;
+  border-bottom: 1px solid rgb(209, 209, 209);
+  margin-top: 50%;
+  padding: 0.3rem 0;
+  width: 15rem;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+input {
+  border: none;
+  font-size: 15px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  outline: none;
+  z-index: 99;
+}
+label {
+  position: absolute;
+  transition: all 0.2s;
+  transform-origin: right bottom;
+  transform: translate(0, 0) scale(1.5);
+  cursor: text;
+  color: rgb(116, 116, 116);
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 8rem;
+  z-index: 1;
+}
+.country__label {
+  width: 11.5rem;
+}
+
+input:focus ~ .border::after,
+input:valid ~ .border::after {
+  transform: scaleX(1);
+}
+.border::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  background: rgb(105, 105, 105);
+  transition: 0.2s;
+  transform-origin: left;
+}
+form {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+button {
+  padding: 10px 20px;
+  margin-top: 25px;
+  background: rgb(83, 160, 196);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  outline: none;
+}
+button:hover {
+  background: rgb(67, 141, 175);
+  color: rgb(250, 250, 250);
+}
+.CityName {
+  color: rgb(77, 94, 102);
+  margin: 1rem;
+}
+.cards__container {
+  display: flex;
+}
+.card__container {
+  border: 1px solid black;
+  padding: 1rem;
+  text-align: center;
+  margin: 2rem;
+  width: 12.5rem;
+}
+.dayName {
+  font-size: 1.8rem;
+}
+.date {
+  font-size: 1.5rem;
+  color: rgb(77, 94, 102);
+}
+.temp__container {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+.forecast__img {
+  width: 5rem;
+  height: 5rem;
+  margin-top: 1rem;
+}
+.country__border {
+  margin-bottom: 2rem;
+}
+.city__border {
+  margin-top: 2rem;
 }
